@@ -1,5 +1,13 @@
 # AUBO Robot
 update time:2019.06.13
+## WARNING
+---
+
+This repository is forked from Aubo's official repository. Some my own modifications are added.
+Try`roslaunch aubo_gazebo aubo_i5_simulation.launch`
+
+---
+
 
 
 * Aubo_robot [ROS](http://www.ros.org/) meta-package for [ROS-Industrial](http://wiki.ros.org/Industrial). See the [ROS wiki](http://wiki.ros.org/)  page for more information.
