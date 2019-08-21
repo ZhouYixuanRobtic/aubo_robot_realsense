@@ -1,0 +1,885 @@
+<sdf version='1.6'>
+  <world name='default'>
+    <light name='sun' type='directional'>
+      <cast_shadows>1</cast_shadows>
+      <pose frame=''>0 0 10 0 -0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.5 0.1 -0.9</direction>
+    </light>
+    <model name='ground_plane'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>100</mu>
+                <mu2>50</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <gravity>0 0 -9.8</gravity>
+    <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
+    <atmosphere type='adiabatic'/>
+    <physics name='default_physics' default='0' type='ode'>
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+    <scene>
+      <ambient>0.4 0.4 0.4 1</ambient>
+      <background>0.7 0.7 0.7 1</background>
+      <shadows>1</shadows>
+    </scene>
+    <wind/>
+    <spherical_coordinates>
+      <surface_model>EARTH_WGS84</surface_model>
+      <latitude_deg>0</latitude_deg>
+      <longitude_deg>0</longitude_deg>
+      <elevation>0</elevation>
+      <heading_deg>0</heading_deg>
+    </spherical_coordinates>
+    <model name='arm'>
+      <link name='base_link'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>-0 0.001538 0.020951 0 -0 0</pose>
+          <mass>0.83419</mass>
+          <inertia>
+            <ixx>0.0014414</ixx>
+            <ixy>7.8809e-15</ixy>
+            <ixz>8.5328e-16</ixz>
+            <iyy>0.0013542</iyy>
+            <iyz>-1.4364e-05</iyz>
+            <izz>0.0024659</izz>
+          </inertia>
+        </inertial>
+        <collision name='base_link_collision'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/xcy/WorkSpace/src/aubo_robot/aubo_description/meshes/aubo_i5/collision/base_link.STL</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='base_link_visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/xcy/WorkSpace/src/aubo_robot/aubo_description/meshes/aubo_i5/visual/base_link.DAE</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='world_joint' type='fixed'>
+        <child>base_link</child>
+        <parent>world</parent>
+      </joint>
+      <link name='shoulder_Link'>
+        <pose frame=''>0 0 0.122 0 -0 -3.14159</pose>
+        <inertial>
+          <pose frame=''>0 0.006 -0.002 0 -0 0</pose>
+          <mass>5.05</mass>
+          <inertia>
+            <ixx>0.0148</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.0143</iyy>
+            <iyz>-0</iyz>
+            <izz>0.0095</izz>
+          </inertia>
+        </inertial>
+        <collision name='shoulder_Link_collision'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/xcy/WorkSpace/src/aubo_robot/aubo_description/meshes/aubo_i5/collision/shoulder_Link.STL</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='shoulder_Link_visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/xcy/WorkSpace/src/aubo_robot/aubo_description/meshes/aubo_i5/visual/shoulder_Link.DAE</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='shoulder_joint' type='revolute'>
+        <child>shoulder_Link</child>
+        <parent>base_link</parent>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-3.05</lower>
+            <upper>3.05</upper>
+            <effort>300</effort>
+            <velocity>100</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+          <use_parent_model_frame>1</use_parent_model_frame>
+        </axis>
+      </joint>
+      <link name='upperArm_Link'>
+        <pose frame=''>1e-06 -0.1215 0.122 1.57079 -1.57079 7e-06</pose>
+        <inertial>
+          <pose frame=''>0.304 0 -0.03 0 -0 0</pose>
+          <mass>11.9</mass>
+          <inertia>
+            <ixx>0.0305</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.4505</iyy>
+            <iyz>0</iyz>
+            <izz>0.0095</izz>
+          </inertia>
+        </inertial>
+        <collision name='upperArm_Link_collision'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/xcy/WorkSpace/src/aubo_robot/aubo_description/meshes/aubo_i5/collision/upperArm_Link.STL</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='upperArm_Link_visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/xcy/WorkSpace/src/aubo_robot/aubo_description/meshes/aubo_i5/visual/upperArm_Link.DAE</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='upperArm_joint' type='revolute'>
+        <child>upperArm_Link</child>
+        <parent>shoulder_Link</parent>
+        <axis>
+          <xyz>4e-06 -1 0</xyz>
+          <limit>
+            <lower>-3.05</lower>
+            <upper>3.05</upper>
+            <effort>300</effort>
+            <velocity>100</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+          <use_parent_model_frame>1</use_parent_model_frame>
+        </axis>
+      </joint>
+      <link name='foreArm_Link'>
+        <pose frame=''>2e-06 -0.1215 0.53 -1.57081 -1.57079 7e-06</pose>
+        <inertial>
+          <pose frame=''>0.415 0 0.0992 0 -0 0</pose>
+          <mass>3.3</mass>
+          <inertia>
+            <ixx>0.0033</ixx>
+            <ixy>0</ixy>
+            <ixz>0.0009</ixz>
+            <iyy>0.0575</iyy>
+            <iyz>0</iyz>
+            <izz>0.0565</izz>
+          </inertia>
+        </inertial>
+        <collision name='foreArm_Link_collision'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/xcy/WorkSpace/src/aubo_robot/aubo_description/meshes/aubo_i5/collision/foreArm_Link.STL</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='foreArm_Link_visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/xcy/WorkSpace/src/aubo_robot/aubo_description/meshes/aubo_i5/visual/foreArm_Link.DAE</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='foreArm_joint' type='revolute'>
+        <child>foreArm_Link</child>
+        <parent>upperArm_Link</parent>
+        <axis>
+          <xyz>4e-06 1 -0</xyz>
+          <limit>
+            <lower>-3.05</lower>
+            <upper>3.05</upper>
+            <effort>300</effort>
+            <velocity>100</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+          <use_parent_model_frame>1</use_parent_model_frame>
+        </axis>
+      </joint>
+      <link name='wrist1_Link'>
+        <pose frame=''>4e-06 -0.1215 0.906 1.5708 7e-06 -4e-06</pose>
+        <inertial>
+          <pose frame=''>0 0.0028 -0.003 0 -0 0</pose>
+          <mass>1.62</mass>
+          <inertia>
+            <ixx>0.0023</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.0013</iyy>
+            <iyz>0</iyz>
+            <izz>0.0022</izz>
+          </inertia>
+        </inertial>
+        <collision name='wrist1_Link_collision'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/xcy/WorkSpace/src/aubo_robot/aubo_description/meshes/aubo_i5/collision/wrist1_Link.STL</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='wrist1_Link_visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/xcy/WorkSpace/src/aubo_robot/aubo_description/meshes/aubo_i5/visual/wrist1_Link.DAE</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='wrist1_joint' type='revolute'>
+        <child>wrist1_Link</child>
+        <parent>foreArm_Link</parent>
+        <axis>
+          <xyz>-4e-06 -1 -7e-06</xyz>
+          <limit>
+            <lower>-3.05</lower>
+            <upper>3.05</upper>
+            <effort>300</effort>
+            <velocity>100</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+          <use_parent_model_frame>1</use_parent_model_frame>
+        </axis>
+      </joint>
+      <link name='wrist2_Link'>
+        <pose frame=''>5e-06 -0.121501 1.0085 4e-06 7e-06 -4e-06</pose>
+        <inertial>
+          <pose frame=''>0 -0.0028 -0.003 0 -0 0</pose>
+          <mass>1.62</mass>
+          <inertia>
+            <ixx>0.0023</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.0013</iyy>
+            <iyz>0</iyz>
+            <izz>0.0022</izz>
+          </inertia>
+        </inertial>
+        <collision name='wrist2_Link_collision'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/xcy/WorkSpace/src/aubo_robot/aubo_description/meshes/aubo_i5/collision/wrist2_Link.STL</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='wrist2_Link_visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/xcy/WorkSpace/src/aubo_robot/aubo_description/meshes/aubo_i5/visual/wrist2_Link.DAE</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='wrist2_joint' type='revolute'>
+        <child>wrist2_Link</child>
+        <parent>wrist1_Link</parent>
+        <axis>
+          <xyz>7e-06 -4e-06 1</xyz>
+          <limit>
+            <lower>-3.05</lower>
+            <upper>3.05</upper>
+            <effort>300</effort>
+            <velocity>100</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+          <use_parent_model_frame>1</use_parent_model_frame>
+        </axis>
+      </joint>
+      <link name='wrist3_Link'>
+        <pose frame=''>4e-06 -0.215501 1.0085 1.5708 7e-06 -4e-06</pose>
+        <inertial>
+          <pose frame=''>0.027066 0.055128 0.025158 0 -0 0</pose>
+          <mass>1.561</mass>
+          <inertia>
+            <ixx>0.022845</ixx>
+            <ixy>0.000318227</ixy>
+            <ixz>-0.000884668</ixz>
+            <iyy>0.0202173</iyy>
+            <iyz>-0.000206103</iyz>
+            <izz>0.0348741</izz>
+          </inertia>
+        </inertial>
+        <collision name='wrist3_Link_collision'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/xcy/WorkSpace/src/aubo_robot/aubo_description/meshes/aubo_i5/collision/wrist3_Link.STL</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <collision name='wrist3_Link_fixed_joint_lump__camera_mount_link_collision_1'>
+          <pose frame=''>0 0.115 0.01 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/xcy/WorkSpace/src/aubo_robot/aubo_description/meshes/CameraMountBoard.stl</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <collision name='wrist3_Link_fixed_joint_lump__camera_link_collision_2'>
+          <pose frame=''>-0.0026 0.114998 0.023 3.14159 -1.57079 1.57089</pose>
+          <geometry>
+            <box>
+              <size>0.02505 0.09 0.025</size>
+            </box>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <collision name='wrist3_Link_fixed_joint_lump__charger_link_collision_3'>
+          <pose frame=''>0.06001 0.03085 0.05208 3.14159 1.57079 3.14159</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/xcy/WorkSpace/src/aubo_robot/aubo_description/meshes/charger.STL</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='wrist3_Link_visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/xcy/WorkSpace/src/aubo_robot/aubo_description/meshes/aubo_i5/visual/wrist3_Link.DAE</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <visual name='wrist3_Link_fixed_joint_lump__camera_mount_link_visual_1'>
+          <pose frame=''>0 0.115 0.01 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/xcy/WorkSpace/src/aubo_robot/aubo_description/meshes/CameraMountBoard.dae</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/White</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='wrist3_Link_fixed_joint_lump__camera_link_visual_2'>
+          <pose frame=''>-0.0026 0.114997 0.0369 0 -9.6e-05 9.6e-05</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/xcy/WorkSpace/src/aubo_robot/aubo_description/meshes/d435.dae</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Gray</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='wrist3_Link_fixed_joint_lump__charger_link_visual_3'>
+          <pose frame=''>0.06001 0.03085 0.05208 3.14159 1.57079 3.14159</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/xcy/WorkSpace/src/aubo_robot/aubo_description/meshes/charger.dae</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Orange</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <velocity_decay/>
+        <velocity_decay/>
+        <velocity_decay/>
+        <sensor name='camera1' type='camera'>
+          <update_rate>30</update_rate>
+          <camera name='realsense'>
+            <horizontal_fov>1.047</horizontal_fov>
+            <image>
+              <width>640</width>
+              <height>480</height>
+              <format>RGB_INT8</format>
+            </image>
+            <clip>
+              <near>0.1</near>
+              <far>100</far>
+            </clip>
+            <noise>
+              <type>gaussian</type>
+              <mean>0</mean>
+              <stddev>0.007</stddev>
+            </noise>
+          </camera>
+          <plugin name='camera_controller' filename='libgazebo_ros_camera.so'>
+            <alwaysOn>1</alwaysOn>
+            <updateRate>30.0</updateRate>
+            <cameraName>camera/color</cameraName>
+            <imageTopicName>image_raw</imageTopicName>
+            <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+            <frameName>camera_color_optical_frame</frameName>
+            <distortionK1>0.0</distortionK1>
+            <distortionK2>0.0</distortionK2>
+            <distortionK3>0.0</distortionK3>
+            <distortionT1>0.0</distortionT1>
+            <distortionT2>0.0</distortionT2>
+            <CxPrime>0.0</CxPrime>
+            <Cx>324.5312805175781</Cx>
+            <Cy>236.61178588867188</Cy>
+            <robotNamespace>/</robotNamespace>
+          </plugin>
+          <pose frame=''>0.0299 0.115001 0.022 -1.34896 -1.56156 -0.228751</pose>
+        </sensor>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='wrist3_joint' type='revolute'>
+        <child>wrist3_Link</child>
+        <parent>wrist2_Link</parent>
+        <axis>
+          <xyz>-4e-06 -1 -7e-06</xyz>
+          <limit>
+            <lower>-3.05</lower>
+            <upper>3.05</upper>
+            <effort>300</effort>
+            <velocity>100</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+          <use_parent_model_frame>1</use_parent_model_frame>
+        </axis>
+      </joint>
+      <static>0</static>
+      <plugin name='gazebo_ros_control' filename='libgazebo_ros_control.so'>
+        <robotNamespace>/aubo_i5</robotNamespace>
+        <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+        <legacyModeNS>1</legacyModeNS>
+      </plugin>
+      <pose frame=''>0 0 0 0 -0 0</pose>
+    </model>
+    <model name='Tag0'>
+      <static>1</static>
+      <link name='link'>
+        <pose frame=''>0 0 0.1 0 -0 0</pose>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.1 0.001 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.1 0.001 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://Tag0/materials/scripts</uri>
+              <uri>model://Tag0/materials/textures</uri>
+              <name>vrc/Tag0</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>0.121969 0.845401 0 0 -0 0</pose>
+    </model>
+    <state world_name='default'>
+      <sim_time>2767 334000000</sim_time>
+      <real_time>2391 854349244</real_time>
+      <wall_time>1566359248 104924402</wall_time>
+      <iterations>2389011</iterations>
+      <model name='Heava'>
+        <pose frame=''>0 -0.8 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='cylinder'>
+          <pose frame=''>0 -0.8 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='Tag0'>
+        <pose frame=''>0 -0.7 0.9 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>0 -0.7 1 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='arm'>
+        <pose frame=''>1e-06 -7e-06 7e-06 -8e-05 -4.7e-05 7e-06</pose>
+        <scale>1 1 1</scale>
+        <link name='base_link'>
+          <pose frame=''>1e-06 -7e-06 7e-06 -8e-05 -4.7e-05 7e-06</pose>
+          <velocity>0.000214 -9e-06 0.000951 0.04652 -0.027897 0.002289</velocity>
+          <acceleration>-0.269846 -2.02559 2.14181 -3.00134 -1.12105 -2.64263</acceleration>
+          <wrench>-0.225103 -1.68972 1.78667 0 -0 0</wrench>
+        </link>
+        <link name='foreArm_Link'>
+          <pose frame=''>0.108569 -0.054992 0.529931 1.57031 -0.318109 -2.01721</pose>
+          <velocity>-0.001594 -0.002528 -0.000326 0.029738 -0.013076 0.001222</velocity>
+          <acceleration>0.500025 0.493071 0.608094 1.01948 1.1492 0.139724</acceleration>
+          <wrench>1.65008 1.62714 2.00671 0 -0 0</wrench>
+        </link>
+        <link name='shoulder_Link'>
+          <pose frame=''>-3e-06 1.2e-05 0.122001 -0.000388 0.000641 -2.01735</pose>
+          <velocity>-0.00147 -0.002622 0.000799 -0.003038 0.003748 0.001164</velocity>
+          <acceleration>-1.73674 -5.67075 1.61932 0.303683 -1.25681 1.73214</acceleration>
+          <wrench>-8.77054 -28.6373 8.17754 0 -0 0</wrench>
+        </link>
+        <link name='upperArm_Link'>
+          <pose frame=''>0.109561 -0.052501 0.121949 -1.6384 -1.56422 -1.94976</pose>
+          <velocity>-0.002075 -0.001265 0.000365 0.003972 0.001189 0.001959</velocity>
+          <acceleration>-1.08428 -0.813602 1.06103 -2.92773 -1.41828 0.646209</acceleration>
+          <wrench>-12.903 -9.68187 12.6263 0 -0 0</wrench>
+        </link>
+        <link name='wrist1_Link'>
+          <pose frame=''>-0.045619 -0.377129 0.647527 1.57133 -0.000663 1.12421</pose>
+          <velocity>-0.002748 -0.006175 -0.012263 0.02838 -0.009093 0.001523</velocity>
+          <acceleration>0.531059 0.800808 0.011022 2.97778 -0.61371 0.204962</acceleration>
+          <wrench>0.860316 1.29731 0.017855 0 -0 0</wrench>
+        </link>
+        <link name='wrist2_Link'>
+          <pose frame=''>-0.045598 -0.377215 0.750025 0.000884 6.6e-05 0.159949</pose>
+          <velocity>-0.003814 -0.009005 -0.012328 0.029317 -0.011361 -0.001766</velocity>
+          <acceleration>1.03238 1.04068 -0.144265 -2.02721 -1.43366 1.32448</acceleration>
+          <wrench>1.67246 1.6859 -0.233709 0 -0 0</wrench>
+        </link>
+        <link name='wrist3_Link'>
+          <pose frame=''>-0.030628 -0.470015 0.749939 1.57172 -6.8e-05 0.159945</pose>
+          <velocity>-0.00411 -0.009046 -0.015049 0.031543 -0.01283 -0.003977</velocity>
+          <acceleration>0.644834 0.455438 -0.880758 1.04999 0.811318 -2.95686</acceleration>
+          <wrench>1.00659 0.710938 -1.37486 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='ground_plane'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <light name='sun'>
+        <pose frame=''>0 0 10 0 -0 0</pose>
+      </light>
+    </state>
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <pose frame=''>1.5087 2.12107 3.62924 -0 0.949797 -2.46701</pose>
+        <view_controller>orbit</view_controller>
+        <projection_type>perspective</projection_type>
+      </camera>
+    </gui>
+    <model name='Heava'>
+      <static>1</static>
+      <pose frame=''>0.01274 0.830323 0 0 -0 0</pose>
+      <link name='cylinder'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <collision name='collision'>
+          <geometry>
+            <cylinder>
+              <radius>0.1</radius>
+              <length>5</length>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <cylinder>
+              <radius>0.1</radius>
+              <length>5</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://Heava/materials/scripts</uri>
+              <uri>model://Heava/materials/textures</uri>
+              <name>Heava/skin</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+  </world>
+</sdf>

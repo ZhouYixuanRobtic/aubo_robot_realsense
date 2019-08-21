@@ -1,0 +1,12 @@
+<launch>
+    <arg name="sim" default="true"/>
+    <arg name="robot_ip" default="192.168.2.13"/>
+
+
+    <!--Launch the moveit wrapper-->
+    <param name="robot_description" command="xacro --inorder  '$(find aubo_gazebo)/urdf/aubo_i5.xacro'"/>
+    <!--Launch the gazebo wrapper-->
+    <include file="$(find aubo_gazebo)/launch/aubo_i5_gazebo_control.launch" />
+
+    <node pkg="tf" type="static_transform_publisher" name="camera_optical_broadcaster" args="0.0 0.0 0.0 -1.571 0.000 -1.571 virtual_camera_color_frame virtual_camera_color_optical_frame 0.01" /> 
+</launch>
