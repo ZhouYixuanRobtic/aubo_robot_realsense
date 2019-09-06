@@ -381,7 +381,7 @@
   </link>
   <!--////////////////////////////////CameraMount_Joint/////////////////////////////////-->
   <joint name="knife_camera_mount_joint" type="fixed">
-    <origin xyz="0.0 0.115 0.01" rpy="0.0 0.0 0.0"/>
+    <origin xyz="0.0 0.11575 0.01288" rpy="0.0 0.0 0.0"/>
     <parent link="wrist3_Link"/>
     <child link="camera_mount_link"/>
   </joint>
@@ -417,7 +417,7 @@
     <collision>
       <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
       <geometry>
-         <mesh filename="package://aubo_description/meshes/charger.STL" />
+         <mesh filename="package://aubo_description/meshes/charger.stl" />
       </geometry>
     </collision>
     <visual>
@@ -434,7 +434,7 @@
 
   <!--////////////////////////////////knife_charger_joint/////////////////////////////////-->
   <joint name="knife_charger_joint" type="fixed">
-    <origin xyz="0.06001 -0.08415 0.04208" rpy="0.0 1.5707 0.0"/>
+    <origin xyz="0.065 -0.08975 0.060" rpy="0.0 0.0 0.0"/>
     <parent link="camera_mount_link"/>
     <child link="charger_link"/>
   </joint>
@@ -445,7 +445,7 @@
   <link name="ee_link"/>
  
   <joint name="ee_link_joint" type="fixed">
-      <origin xyz="0 -0.112 0.20667" rpy="-1.5707 0.0 0.0"/>
+      <origin xyz="0 -0.11575 0.20807" rpy="-1.5707 0.0 0.0"/>
       <parent link="camera_mount_link"/>
       <child link="ee_link" />
   </joint>
@@ -453,7 +453,7 @@
   <link name="charger_ee_link"/>
 
   <joint name="charger_ee_link_joint" type="fixed">
-      <origin xyz="0 0 0.047" rpy="0.0 -1.5707 -1.5707"/>
+      <origin xyz="0.053 0.0 0.0" rpy="${-M_PI/2} 0.0 0.0"/>
       <parent link="charger_link"/>
       <child link="charger_ee_link" />
   </joint>
