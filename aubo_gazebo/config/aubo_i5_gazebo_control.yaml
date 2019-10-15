@@ -35,4 +35,4 @@ aubo_i5:
     type: position_controllers/JointPositionController
     joint: wrist3_joint
     pid: {p: 0.0,  i: 0.00, d: 0.0, i_clamp: 1}
-
+robot_name: "aubo_i5"

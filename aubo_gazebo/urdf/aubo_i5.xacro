@@ -129,7 +129,7 @@
                   izz="0.003879257" />
     </xacro:macro>
     
-    <xacro:macro name="Charger_Inertia">
+    <!--xacro:macro name="Charger_Inertia">
         <origin xyz="0 0 0" 
                 rpy="0 0 0"/>
         <mass value="0.564" />
@@ -139,7 +139,7 @@
                   iyy="0.000498940" 
                   iyz="0.0" 
                   izz="0.003879257" />
-    </xacro:macro>
+    </xacro:macro-->
 
 
 
@@ -381,7 +381,7 @@
   </link>
   <!--////////////////////////////////CameraMount_Joint/////////////////////////////////-->
   <joint name="knife_camera_mount_joint" type="fixed">
-    <origin xyz="0.0 0.11575 0.01288" rpy="0.0 0.0 0.0"/>
+    <origin xyz="0.0 0.0 0.005" rpy="0.0 -1.5707 -1.5707"/>
     <parent link="wrist3_Link"/>
     <child link="camera_mount_link"/>
   </joint>
@@ -408,12 +408,12 @@
   </link>
   <!--////////////////////////////////camera_joint/////////////////////////////////-->
   <joint name="camera_joint" type="fixed">
-    <origin xyz="0.0149 0.0 0.012" rpy="0.0 -1.5707 -1.5707"/>
+    <origin xyz="0.02175 0.0149 -0.0185" rpy="0.0 0.0 0"/>
     <parent link="camera_mount_link"/>
     <child link="camera_link"/>
   </joint>
   <!--////////////////////////////////charger/////////////////////////////////-->
-  <link name="charger_link">
+  <!--link name="charger_link">
     <collision>
       <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
       <geometry>
@@ -430,14 +430,14 @@
     <inertial>
       <xacro:Charger_Inertia />    
     </inertial>
-  </link>
+  </link-->
 
   <!--////////////////////////////////knife_charger_joint/////////////////////////////////-->
-  <joint name="knife_charger_joint" type="fixed">
+  <!--joint name="knife_charger_joint" type="fixed">
     <origin xyz="0.065 -0.08975 0.060" rpy="0.0 0.0 0.0"/>
     <parent link="camera_mount_link"/>
     <child link="charger_link"/>
-  </joint>
+  </joint-->
     <!--0.0149 0.047621 0.110-->
  
 
@@ -445,18 +445,18 @@
   <link name="ee_link"/>
  
   <joint name="ee_link_joint" type="fixed">
-      <origin xyz="0 -0.11575 0.20807" rpy="-1.5707 0.0 0.0"/>
+      <origin xyz="0.10125 0.0 -0.0695" rpy="0.0 0.0 1.5707"/>
       <parent link="camera_mount_link"/>
       <child link="ee_link" />
   </joint>
 
-  <link name="charger_ee_link"/>
+  <!--link name="charger_ee_link"/-->
 
-  <joint name="charger_ee_link_joint" type="fixed">
+  <!--joint name="charger_ee_link_joint" type="fixed">
       <origin xyz="0.053 0.0 0.0" rpy="${-M_PI/2} 0.0 0.0"/>
       <parent link="charger_link"/>
       <child link="charger_ee_link" />
-  </joint>
+  </joint-->
 
   <link name="world" />
   <joint name="world_joint" type="fixed">
@@ -479,9 +479,9 @@
   <gazebo reference="camera_link">
      <material>Gazebo/Gray</material>
   </gazebo>
-   <gazebo reference="charger_link">
+   <!--gazebo reference="charger_link">
      <material>Gazebo/Orange</material>
-  </gazebo>
+  </gazebo-->
 
   <!--////////////////////////////////// Transmissions for ROS Control //////////////////////////-->
 

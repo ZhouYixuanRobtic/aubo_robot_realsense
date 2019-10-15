@@ -25,12 +25,12 @@
         <joint name="wrist3_joint" value="0" />
     </group_state>
     <group_state name="home" group="manipulator_i5">
-        <joint name="foreArm_joint" value="-1.5418" />
-        <joint name="shoulder_joint" value="0" />
-        <joint name="upperArm_joint" value="0" />
-        <joint name="wrist1_joint" value="0" />
-        <joint name="wrist2_joint" value="-1.3742" />
-        <joint name="wrist3_joint" value="0" />
+        <joint name="foreArm_joint" value="-2.6507" />
+        <joint name="shoulder_joint" value="2.1896" />
+        <joint name="upperArm_joint" value="0.0007" />
+        <joint name="wrist1_joint" value="-2.3498" />
+        <joint name="wrist2_joint" value="-0.0311049" />
+        <joint name="wrist3_joint" value="0.000869323" />
     </group_state>
     <!--END EFFECTOR: Purpose: Represent information about an end effector.-->
     <end_effector name="ee" parent_link="ee_link" group="ee_group" />
@@ -43,7 +43,6 @@
     <disable_collisions link1="camera_link" link2="wrist1_Link" reason="Never" />
     <disable_collisions link1="camera_link" link2="wrist2_Link" reason="Never" />
     <disable_collisions link1="camera_link" link2="wrist3_Link" reason="Never" />
-    <disable_collisions link1="camera_mount_link" link2="wrist1_Link" reason="Never" />
     <disable_collisions link1="camera_mount_link" link2="wrist2_Link" reason="Never" />
     <disable_collisions link1="camera_mount_link" link2="wrist3_Link" reason="Adjacent" />
     <disable_collisions link1="foreArm_Link" link2="upperArm_Link" reason="Adjacent" />
