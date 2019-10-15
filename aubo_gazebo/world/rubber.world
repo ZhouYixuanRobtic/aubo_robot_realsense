@@ -473,15 +473,15 @@
       <link name='wrist3_Link'>
         <pose frame=''>4e-06 -0.215501 1.0085 1.5708 7e-06 -4e-06</pose>
         <inertial>
-          <pose frame=''>0.028868 0.053662 0.033774 0 -0 0</pose>
-          <mass>1.561</mass>
+          <pose frame=''>0.00843 -0.010465 0.012449 0 -0 0</pose>
+          <mass>0.997</mass>
           <inertia>
-            <ixx>0.0237953</ixx>
-            <ixy>0.000492011</ixy>
-            <ixz>-0.00135887</ixz>
-            <iyy>0.0211633</iyy>
-            <iyz>8.70115e-05</iyz>
-            <izz>0.0352632</izz>
+            <ixx>0.0147919</ixx>
+            <ixy>6.71967e-05</ixy>
+            <ixz>-0.000120191</ixz>
+            <iyy>0.0181932</iyy>
+            <iyz>0.000149201</iyz>
+            <izz>0.0264301</izz>
           </inertia>
         </inertial>
         <collision name='wrist3_Link_collision'>
@@ -507,7 +507,7 @@
           </surface>
         </collision>
         <collision name='wrist3_Link_fixed_joint_lump__camera_mount_link_collision_1'>
-          <pose frame=''>0 0.11575 0.01288 0 -0 0</pose>
+          <pose frame=''>0 0 0.005 3.14159 -1.57079 1.57089</pose>
           <geometry>
             <mesh>
               <scale>1 1 1</scale>
@@ -529,33 +529,11 @@
           <max_contacts>10</max_contacts>
         </collision>
         <collision name='wrist3_Link_fixed_joint_lump__camera_link_collision_2'>
-          <pose frame=''>-0.0026 0.115748 0.02588 3.14159 -1.57079 1.57089</pose>
+          <pose frame=''>-0.002598 -0.018502 0.027748 3.14159 -1.57079 1.57089</pose>
           <geometry>
             <box>
               <size>0.02505 0.09 0.025</size>
             </box>
-          </geometry>
-          <surface>
-            <contact>
-              <ode/>
-            </contact>
-            <friction>
-              <ode/>
-              <torsional>
-                <ode/>
-              </torsional>
-            </friction>
-            <bounce/>
-          </surface>
-          <max_contacts>10</max_contacts>
-        </collision>
-        <collision name='wrist3_Link_fixed_joint_lump__charger_link_collision_3'>
-          <pose frame=''>0.065 0.026 0.07288 0 -0 0</pose>
-          <geometry>
-            <mesh>
-              <scale>1 1 1</scale>
-              <uri>/home/xcy/WorkSpace/src/aubo_robot_realsense/aubo_description/meshes/charger.stl</uri>
-            </mesh>
           </geometry>
           <surface>
             <contact>
@@ -581,7 +559,7 @@
           </geometry>
         </visual>
         <visual name='wrist3_Link_fixed_joint_lump__camera_mount_link_visual_1'>
-          <pose frame=''>0 0.11575 0.01288 0 -0 0</pose>
+          <pose frame=''>0 0 0.005 3.14159 -1.57079 1.57089</pose>
           <geometry>
             <mesh>
               <scale>1 1 1</scale>
@@ -596,7 +574,7 @@
           </material>
         </visual>
         <visual name='wrist3_Link_fixed_joint_lump__camera_link_visual_2'>
-          <pose frame=''>-0.0026 0.115747 0.03978 0 -9.6e-05 9.6e-05</pose>
+          <pose frame=''>-0.002598 -0.018504 0.041648 0 -9.6e-05 9.6e-05</pose>
           <geometry>
             <mesh>
               <scale>1 1 1</scale>
@@ -610,23 +588,9 @@
             </script>
           </material>
         </visual>
-        <visual name='wrist3_Link_fixed_joint_lump__charger_link_visual_3'>
-          <pose frame=''>0.065 0.026 0.07288 0 -0 0</pose>
-          <geometry>
-            <mesh>
-              <scale>1 1 1</scale>
-              <uri>/home/xcy/WorkSpace/src/aubo_robot_realsense/aubo_description/meshes/charger.dae</uri>
-            </mesh>
-          </geometry>
-          <material>
-            <script>
-              <name>Gazebo/Orange</name>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
-            </script>
-          </material>
-        </visual>
         <velocity_decay/>
         <velocity_decay/>
+        <gravity>1</gravity>
         <velocity_decay/>
         <sensor name='camera1' type='camera'>
           <update_rate>30</update_rate>
@@ -664,10 +628,8 @@
             <Cy>236.61178588867188</Cy>
             <robotNamespace>/</robotNamespace>
           </plugin>
-          <pose frame=''>0.0299 0.115751 0.02488 -1.34896 -1.56156 -0.228751</pose>
+          <pose frame=''>0.029902 -0.018499 0.026748 -1.34896 -1.56156 -0.228751</pose>
         </sensor>
-        <gravity>1</gravity>
-        <velocity_decay/>
         <self_collide>0</self_collide>
         <enable_wind>0</enable_wind>
         <kinematic>0</kinematic>
@@ -700,7 +662,7 @@
     </model>
     <model name='Heava'>
       <static>1</static>
-      <pose frame=''>0.000876 -1.0055 0 0 -0 0</pose>
+      <pose frame=''>0.03711 -0.841028 0 0 -0 0</pose>
       <link name='cylinder'>
         <pose frame=''>0 0 0 0 -0 0</pose>
         <collision name='collision'>
@@ -744,7 +706,99 @@
         <kinematic>0</kinematic>
       </link>
     </model>
-    <model name='Tag0'>
+    <state world_name='default'>
+      <sim_time>1377 701000000</sim_time>
+      <real_time>1283 521160801</real_time>
+      <wall_time>1571129544 902094186</wall_time>
+      <iterations>1281585</iterations>
+      <model name='Heava'>
+        <pose frame=''>0 -0.6 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='cylinder'>
+          <pose frame=''>0 -0.6 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='Tag0_0'>
+        <pose frame=''>0 -0.5 0.7 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>0 -0.5 0.8 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='arm'>
+        <pose frame=''>4e-06 -0 4e-06 -1.5e-05 -8.1e-05 2e-06</pose>
+        <scale>1 1 1</scale>
+        <link name='base_link'>
+          <pose frame=''>4e-06 -0 4e-06 -1.5e-05 -8.1e-05 2e-06</pose>
+          <velocity>1.9e-05 -2.8e-05 -0.000651 0.000266 -0.033695 -0.000376</velocity>
+          <acceleration>-1.37295 -0.067147 -1.30037 -2.60886 1.4159 2.39085</acceleration>
+          <wrench>-1.14531 -0.056013 -1.08475 0 -0 0</wrench>
+        </link>
+        <link name='foreArm_Link'>
+          <pose frame=''>0.099375 0.070203 0.529945 1.56985 1.08089 -0.952856</pose>
+          <velocity>0.001064 -0.001363 -0.000455 0.011384 0.008481 -0.000508</velocity>
+          <acceleration>0.117226 -0.370626 -0.645335 -2.06872 -1.54905 -0.648558</acceleration>
+          <wrench>0.386845 -1.22306 -2.12961 0 -0 0</wrench>
+        </link>
+        <link name='shoulder_Link'>
+          <pose frame=''>-1e-05 2e-06 0.121999 -0.000386 0.000312 -0.952019</pose>
+          <velocity>-0.001466 0.000353 -0.000459 -0.000571 0.001614 0.000308</velocity>
+          <acceleration>-2.94313 0.711135 -0.93764 2.02531 0.005716 -1.76672</acceleration>
+          <wrench>-14.8628 3.59123 -4.73508 0 -0 0</wrench>
+        </link>
+        <link name='upperArm_Link'>
+          <pose frame=''>0.098975 0.070459 0.121948 -1.95797 -1.56964 -0.56485</pose>
+          <velocity>-0.001011 -0.000261 -0.000492 0.002976 0.004473 0.000138</velocity>
+          <acceleration>-0.781694 -0.251819 -0.870104 2.47092 -0.491168 0.238511</acceleration>
+          <wrench>-9.30216 -2.99665 -10.3542 0 -0 0</wrench>
+        </link>
+        <link name='wrist1_Link'>
+          <pose frame=''>0.201876 -0.074002 0.198169 1.57127 -0.301972 2.18947</pose>
+          <velocity>-0.001791 0.002369 -0.002925 0.010871 0.007875 -0.001278</velocity>
+          <acceleration>0.192389 -0.327704 -0.641403 -0.786822 0.237807 -2.96075</acceleration>
+          <wrench>0.31167 -0.53088 -1.03907 0 -0 0</wrench>
+        </link>
+        <link name='wrist2_Link'>
+          <pose frame=''>0.219595 -0.098807 0.29603 0.010167 -0.301829 2.15692</pose>
+          <velocity>-0.000999 0.001369 -0.003279 0.009569 0.007284 -0.00229</velocity>
+          <acceleration>0.25372 -0.144731 -0.51831 -1.13239 -0.71471 2.91854</acceleration>
+          <wrench>0.411026 -0.234464 -0.839662 0 -0 0</wrench>
+        </link>
+        <link name='wrist3_Link'>
+          <pose frame=''>0.297745 -0.046579 0.295116 1.58099 -0.302785 2.15691</pose>
+          <velocity>-0.000876 0.00122 -0.003261 0.011071 0.006543 -0.002003</velocity>
+          <acceleration>0.312638 -0.124153 -0.302788 0.217032 1.36245 0.284056</acceleration>
+          <wrench>0.3117 -0.123781 -0.30188 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='ground_plane'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <light name='sun'>
+        <pose frame=''>0 0 10 0 -0 0</pose>
+      </light>
+    </state>
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <pose frame=''>-2.54887 0.041456 1.68369 -0 0.483646 0.216993</pose>
+        <view_controller>orbit</view_controller>
+        <projection_type>perspective</projection_type>
+      </camera>
+    </gui>
+    <model name='Tag0_0'>
       <static>1</static>
       <link name='link'>
         <pose frame=''>0 0 0.1 0 -0 0</pose>
@@ -787,99 +841,7 @@
         <enable_wind>0</enable_wind>
         <kinematic>0</kinematic>
       </link>
-      <pose frame=''>0.104488 -0.735329 0 0 -0 0</pose>
+      <pose frame=''>-0.089371 -0.367954 0 0 -0 0</pose>
     </model>
-    <state world_name='default'>
-      <sim_time>32 974000000</sim_time>
-      <real_time>33 738984626</real_time>
-      <wall_time>1567741696 352064351</wall_time>
-      <iterations>32974</iterations>
-      <model name='Heava'>
-        <pose frame=''>0 -1 0 0 -0 0</pose>
-        <scale>1 1 1</scale>
-        <link name='cylinder'>
-          <pose frame=''>0 -1 0 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='Tag0'>
-        <pose frame=''>0 -0.9 0.8 0 -0 0</pose>
-        <scale>1 1 1</scale>
-        <link name='link'>
-          <pose frame=''>0 -0.9 0.9 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='arm'>
-        <pose frame=''>0 -3e-06 4e-06 -5e-05 -1.9e-05 2e-06</pose>
-        <scale>1 1 1</scale>
-        <link name='base_link'>
-          <pose frame=''>0 -3e-06 4e-06 -5e-05 -1.9e-05 2e-06</pose>
-          <velocity>4.7e-05 1.6e-05 0.000493 0.023319 -0.016407 0.00043</velocity>
-          <acceleration>-0.291796 -0.962493 1.0764 1.83803 0.805166 -2.33764</acceleration>
-          <wrench>-0.243413 -0.802902 0.897921 0 -0 0</wrench>
-        </link>
-        <link name='foreArm_Link'>
-          <pose frame=''>-4.3e-05 -0.121682 0.529946 0.042727 -1.57034 -1.61381</pose>
-          <velocity>0.000134 -0.000346 0.00042 -0.001027 0.000839 0.002366</velocity>
-          <acceleration>-0.035385 0.191753 0.674367 -0.112366 -0.067168 -1.35185</acceleration>
-          <wrench>-0.11677 0.632785 2.22541 0 -0 0</wrench>
-        </link>
-        <link name='shoulder_Link'>
-          <pose frame=''>-1e-06 9e-06 0.121999 -0.000403 -7e-06 3.14132</pose>
-          <velocity>-0.001053 -0.000661 0.000391 -0.000929 0.000539 0.001762</velocity>
-          <acceleration>-1.28161 -1.82154 0.857343 -1.82292 0.159165 1.96594</acceleration>
-          <wrench>-6.47215 -9.19878 4.32958 0 -0 0</wrench>
-        </link>
-        <link name='upperArm_Link'>
-          <pose frame=''>-3.3e-05 -0.121492 0.121946 -3.09929 -1.57034 -1.61338</pose>
-          <velocity>-0.000389 -0.000603 0.000388 -0.001024 0.001137 0.002277</velocity>
-          <acceleration>-0.304553 -0.901825 0.800934 2.9732 -1.09867 -2.39015</acceleration>
-          <wrench>-3.62418 -10.7317 9.53112 0 -0 0</wrench>
-        </link>
-        <link name='wrist1_Link'>
-          <pose frame=''>-5e-05 -0.121855 0.905946 1.57125 -2.4e-05 -0.000283</pose>
-          <velocity>0.000419 2.6e-05 0.000414 -0.001635 0.000649 0.001777</velocity>
-          <acceleration>0.182963 0.076348 0.915966 2.56412 0.457714 -2.50019</acceleration>
-          <wrench>0.2964 0.123685 1.48386 0 -0 0</wrench>
-        </link>
-        <link name='wrist2_Link'>
-          <pose frame=''>-5.3e-05 -0.121903 1.00845 0.000492 -2.1e-05 -0.000304</pose>
-          <velocity>0.000427 0.000108 0.000384 0.000831 -0.000146 0.000377</velocity>
-          <acceleration>0.239934 0.302048 0.873591 0.636715 0.315734 0.872411</acceleration>
-          <wrench>0.388693 0.489317 1.41522 0 -0 0</wrench>
-        </link>
-        <link name='wrist3_Link'>
-          <pose frame=''>-8.2e-05 -0.215904 1.0084 1.57133 -3.8e-05 -0.000305</pose>
-          <velocity>0.000418 9e-05 0.000209 0.002929 0.002025 -0.000603</velocity>
-          <acceleration>0.273361 0.028981 0.501029 -1.84691 -0.177901 -0.659578</acceleration>
-          <wrench>0.426717 0.04524 0.782107 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='ground_plane'>
-        <pose frame=''>0 0 0 0 -0 0</pose>
-        <scale>1 1 1</scale>
-        <link name='link'>
-          <pose frame=''>0 0 0 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <light name='sun'>
-        <pose frame=''>0 0 10 0 -0 0</pose>
-      </light>
-    </state>
-    <gui fullscreen='0'>
-      <camera name='user_camera'>
-        <pose frame=''>3.65451 -1.00074 1.17433 0 0.279643 3.09219</pose>
-        <view_controller>orbit</view_controller>
-        <projection_type>perspective</projection_type>
-      </camera>
-    </gui>
   </world>
 </sdf>
