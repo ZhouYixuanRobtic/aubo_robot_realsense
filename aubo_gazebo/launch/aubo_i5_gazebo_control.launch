@@ -17,13 +17,13 @@
     <arg name="paused" value="$(arg paused)"/>
     <arg name="use_sim_time" value="$(arg use_sim_time)"/>
     <arg name="headless" value="$(arg headless)"/>
-    <arg name="world_name" value="$(find aubo_gazebo)/world/rubber.world"/>
+    <!--arg name="world_name" value="$(find aubo_gazebo)/world/rubber.world"/-->
   </include>
 
 
   <!-- 2.Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
-  <!--node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
-	args="-urdf -model arm -param robot_description"/--> 		
+  <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+	args="-urdf -model arm -param robot_description"/> 		
 
 	<!-- 将Gazebo关节控制器的配置参数加载到参数服务器中 -->
         <rosparam file="$(find aubo_gazebo)/config/aubo_i5_gazebo_control.yaml" command="load"/>

@@ -40,13 +40,19 @@
     <disable_collisions link1="base_link" link2="shoulder_Link" reason="Adjacent" />
     <disable_collisions link1="base_link" link2="upperArm_Link" reason="Never" />
     <disable_collisions link1="camera_link" link2="camera_mount_link" reason="Adjacent" />
+    <disable_collisions link1="camera_link" link2="knife_link" reason="Never" />
     <disable_collisions link1="camera_link" link2="wrist1_Link" reason="Never" />
     <disable_collisions link1="camera_link" link2="wrist2_Link" reason="Never" />
     <disable_collisions link1="camera_link" link2="wrist3_Link" reason="Never" />
-    <disable_collisions link1="camera_mount_link" link2="wrist2_Link" reason="Never" />
-    <disable_collisions link1="camera_mount_link" link2="wrist3_Link" reason="Adjacent" />
+    <disable_collisions link1="camera_mount_link" link2="knife_link" reason="Never" />
+    <disable_collisions link1="camera_mount_link" link2="wrist1_Link" reason="Never" />
+    <disable_collisions link1="camera_mount_link" link2="wrist2_Link" reason="Adjacent" />
+    <disable_collisions link1="camera_mount_link" link2="wrist3_Link" reason="Never" />
     <disable_collisions link1="foreArm_Link" link2="upperArm_Link" reason="Adjacent" />
     <disable_collisions link1="foreArm_Link" link2="wrist1_Link" reason="Adjacent" />
+    <disable_collisions link1="knife_link" link2="wrist1_Link" reason="Never" />
+    <disable_collisions link1="knife_link" link2="wrist2_Link" reason="Never" />
+    <disable_collisions link1="knife_link" link2="wrist3_Link" reason="Adjacent" />
     <disable_collisions link1="shoulder_Link" link2="upperArm_Link" reason="Adjacent" />
     <disable_collisions link1="shoulder_Link" link2="wrist1_Link" reason="Never" />
     <disable_collisions link1="wrist1_Link" link2="wrist2_Link" reason="Adjacent" />
