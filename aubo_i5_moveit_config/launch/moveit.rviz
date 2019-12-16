@@ -4,6 +4,7 @@ Panels:
     Name: Displays
     Property Tree Widget:
       Expanded:
+        - /Global Options1
         - /MotionPlanning1
         - /MotionPlanning1/Planned Path1
       Splitter Ratio: 0.742560029
@@ -97,6 +98,11 @@ Visualization Manager:
             Show Axes: false
             Show Trail: false
             Value: true
+          knife_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
           shoulder_Link:
             Alpha: 1
             Show Axes: false
@@ -108,10 +114,6 @@ Visualization Manager:
             Show Trail: false
             Value: true
           virtual_camera_color_frame:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-          world:
             Alpha: 1
             Show Axes: false
             Show Trail: false
@@ -199,6 +201,11 @@ Visualization Manager:
             Show Axes: false
             Show Trail: false
             Value: true
+          knife_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
           shoulder_Link:
             Alpha: 1
             Show Axes: false
@@ -210,10 +217,6 @@ Visualization Manager:
             Show Trail: false
             Value: true
           virtual_camera_color_frame:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-          world:
             Alpha: 1
             Show Axes: false
             Show Trail: false
@@ -241,7 +244,7 @@ Visualization Manager:
   Global Options:
     Background Color: 48; 48; 48
     Default Light: true
-    Fixed Frame: world
+    Fixed Frame: base_link
     Frame Rate: 30
   Name: root
   Tools:
@@ -253,7 +256,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/XYOrbit
-      Distance: 5.2523241
+      Distance: 2.18170881
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.0599999987
         Stereo Focal Distance: 1
@@ -268,10 +271,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.00999999978
-      Pitch: 0.384797007
+      Pitch: 0.799795985
       Target Frame: world
       Value: XYOrbit (rviz)
-      Yaw: 5.41493607
+      Yaw: 4.98493671
     Saved: ~
 Window Geometry:
   Displays:

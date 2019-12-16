@@ -40,7 +40,7 @@
                                                                             wrist3_joint_position_controller"/>
 
   <!-- 3.run transform node /joint_state -> /gazebo every joint/command -->
-  <node name="aubo_gazebo_driver" pkg="aubo_driver" type="aubo_gazebo_driver" />
+  <node name="aubo_gazebo_driver" pkg="aubo_driver" type="aubo_gazebo_driver" required="true"/>
 
 
 </launch>
