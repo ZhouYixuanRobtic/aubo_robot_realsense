@@ -108,43 +108,55 @@
     <xacro:macro name="Knife_Inertia">
         <origin xyz="0 0 0" 
                 rpy="0 0 0"/>        
-        <mass value="0.033" />
-        <inertia  ixx="1.474E-06" 
-                  ixy="0.0" 
-                  ixz="0.0" 
-                  iyy="7.2187E-08" 
-                  iyz="0" 
-                  izz="1.545727E-06" />
+        <mass value="2.900" />
+        <inertia  ixx="9.262021396E-02"
+                  ixy="4.23043326E-03"
+                  ixz="5.458128035E-02"
+                  iyy="1.3936975446E-01"
+                  iyz="9.51563616E-03"
+                  izz="6.341550849E-02" />
     </xacro:macro>
 
     <xacro:macro name="Camera_Inertia">
-        <origin xyz="0 0 0" 
-                rpy="0 0 0"/>        
-        <mass value="0.564" />
-        <inertia  ixx="0.003881243" 
-                  ixy="0.0" 
-                  ixz="0.0" 
-                  iyy="0.000498940" 
-                  iyz="0.0" 
-                  izz="0.003879257" />
-    </xacro:macro>
-    
-    <!--xacro:macro name="Charger_Inertia">
-        <origin xyz="0 0 0" 
+        <origin xyz="0 0 0"
                 rpy="0 0 0"/>
         <mass value="0.564" />
-        <inertia  ixx="0.003881243" 
-                  ixy="0.0" 
-                  ixz="0.0" 
-                  iyy="0.000498940" 
-                  iyz="0.0" 
+        <inertia  ixx="0.003881243"
+                  ixy="0.0"
+                  ixz="0.0"
+                  iyy="0.000498940"
+                  iyz="0.0"
+                  izz="0.003879257" />
+    </xacro:macro>
+
+    <xacro:macro name="Camera_Mount_Inertia">
+        <origin xyz="0 0 0"
+                rpy="0 0 0"/>
+        <mass value="0.63617" />
+        <inertia  ixx="2.57390373e-03"
+                  ixy="0.4E-10"
+                  ixz="-6.204366E-04"
+                  iyy="2.87452369E-03"
+                  iyz="-7.39E-09"
+                  izz="5.2167513E-04" />
+    </xacro:macro>
+
+    <!--xacro:macro name="Charger_Inertia">
+        <origin xyz="0 0 0"
+                rpy="0 0 0"/>
+        <mass value="0.564" />
+        <inertia  ixx="0.003881243"
+                  ixy="0.0"
+                  ixz="0.0"
+                  iyy="0.000498940"
+                  iyz="0.0"
                   izz="0.003879257" />
     </xacro:macro-->
 
 
 
     <!--/////////////////////////////// BASE_LINK ////////////////////////////////////-->
-   
+
    <link name="base_link">
     <inertial>
       <origin xyz="-1.4795E-13 0.0015384 0.020951" rpy="0 0 0" />
@@ -167,6 +179,39 @@
       </geometry>
     </collision>
   </link>
+
+
+  <link name="velodyne">
+    <visual>
+      <origin xyz="0.0 0.0 0.0"/>
+      <geometry>
+        <cylinder length="0.07" radius="0.05" />
+      </geometry>
+      <material name="gray" />
+    </visual>
+  </link>
+
+  <link name="imu_link">
+    <visual>
+      <origin xyz="0.0 0.0 0.0" />
+      <geometry>
+        <box size="0.04 0.02 0.01" />
+      </geometry>
+      <material name="orange" />
+    </visual>
+  </link>
+
+  <joint name="imu_link_joint" type="fixed">
+    <parent link="base_link" />
+    <child link="imu_link" />
+    <origin xyz="0. 0. 0." rpy="0 0 0" />
+  </joint>
+
+  <joint name="velodyne_joint" type="fixed">
+    <parent link="base_link" />
+    <child link="velodyne" />
+    <origin xyz="0.32 0 0.035" rpy="0 0 0" />
+  </joint>
 
   <!--/////////////////////////////// SHOULDER_LINK ////////////////////////////////////-->
   <link name="shoulder_Link">
@@ -359,7 +404,31 @@
     <axis xyz="0 0 1" />
     <limit lower="-3.05" upper="3.05" effort="300" velocity="100" />
   </joint>
-
+  <!--////////////////////////////////CameraMount_Link/////////////////////////////////-->
+  <link name="knife_link" >
+    <visual>
+      <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+      <geometry>
+         <mesh filename="package://aubo_description/meshes/knife.STL" />
+      </geometry>
+      <!--material name="aluminum"/-->
+    </visual>
+    <collision>
+      <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+      <geometry>
+         <mesh filename="package://aubo_description/meshes/knife.STL" />
+      </geometry>
+    </collision>
+    <inertial>
+      <xacro:Knife_Inertia />
+    </inertial>
+  </link>
+  <!--////////////////////////////////CameraMount_Joint/////////////////////////////////-->
+  <joint name="knife_mount_joint" type="fixed">
+    <origin xyz="0.0 0.0 0.00575" rpy="1.5707 0.0 3.1415"/>
+    <parent link="wrist3_Link"/>
+    <child link="knife_link"/>
+  </joint>
   <!--////////////////////////////////CameraMount_Link/////////////////////////////////-->
   <link name="camera_mount_link" >
     <visual>
@@ -376,12 +445,12 @@
       </geometry>
     </collision>
     <inertial>
-      <xacro:Knife_Inertia />
+      <xacro:Camera_Mount_Inertia />
     </inertial>
   </link>
   <!--////////////////////////////////CameraMount_Joint/////////////////////////////////-->
   <joint name="knife_camera_mount_joint" type="fixed">
-    <origin xyz="0.0 0.0 0.005" rpy="0.0 -1.5707 -1.5707"/>
+    <origin xyz="0.0 0.0 0.0001" rpy="0.00 0.0 0.0277"/>
     <parent link="wrist3_Link"/>
     <child link="camera_mount_link"/>
   </joint>
@@ -392,6 +461,7 @@
         <origin xyz="0.001 -0.0175 0" rpy="0 0 0"/>
         <geometry>
         <box size="0.02505 0.090 0.025"/>
+
         </geometry>
       </collision>
     <visual>
@@ -408,7 +478,7 @@
   </link>
   <!--////////////////////////////////camera_joint/////////////////////////////////-->
   <joint name="camera_joint" type="fixed">
-    <origin xyz="0.02175 0.0149 -0.0185" rpy="0.0 0.0 0"/>
+    <origin xyz="0.03358 0.098 -0.05518" rpy="-1.5707 -1.5707 0"/>
     <parent link="camera_mount_link"/>
     <child link="camera_link"/>
   </joint>
@@ -428,7 +498,7 @@
       <material name="aluminum"/>
     </visual>
     <inertial>
-      <xacro:Charger_Inertia />    
+      <xacro:Charger_Inertia />
     </inertial>
   </link-->
 
@@ -439,14 +509,14 @@
     <child link="charger_link"/>
   </joint-->
     <!--0.0149 0.047621 0.110-->
- 
+
 
  <!-- /////////////////////////////////   world   ////////////////////////////////////// -->
   <link name="ee_link"/>
- 
+
   <joint name="ee_link_joint" type="fixed">
-      <origin xyz="0.10125 0.0 -0.0695" rpy="0.0 0.0 1.5707"/>
-      <parent link="camera_mount_link"/>
+      <origin xyz="0.0 0.0 0.2" rpy="-1.5707 0.0 0.0"/>
+      <parent link="wrist3_Link"/>
       <child link="ee_link" />
   </joint>
 
@@ -457,13 +527,6 @@
       <parent link="charger_link"/>
       <child link="charger_ee_link" />
   </joint-->
-
-  <link name="world" />
-  <joint name="world_joint" type="fixed">
-    <parent link="world" />
-    <child link = "base_link" />
-    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
-  </joint>
   
   <link name="virtual_camera_color_frame" />
   <joint name="virtual_camera_joint" type="fixed">
